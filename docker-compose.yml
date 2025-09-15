@@ -4,6 +4,7 @@ services :
     restart: always
     command:
       - "--api.dashboard=true"
+      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
@@ -14,6 +15,7 @@ services :
       - "--certificatesresolvers.mytlschallenge.acme.email=${SSL_EMAIL}"
       - "--certificatesresolvers.mytlschallenge.acme.storage=/letsencrypt/acme.json"
     ports:
+      - "8080:8080"
       - "80:80"
       - "443:443"
     volumes:
